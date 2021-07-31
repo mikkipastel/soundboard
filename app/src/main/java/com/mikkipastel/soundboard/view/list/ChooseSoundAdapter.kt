@@ -1,4 +1,4 @@
-package com.mikkipastel.soundboard.list
+package com.mikkipastel.soundboard.view.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

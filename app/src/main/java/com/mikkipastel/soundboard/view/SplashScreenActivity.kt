@@ -1,4 +1,4 @@
-package com.mikkipastel.soundboard
+package com.mikkipastel.soundboard.view
 
 import android.content.Intent
 import android.os.Bundle

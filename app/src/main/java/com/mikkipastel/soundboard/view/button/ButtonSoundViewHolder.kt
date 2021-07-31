@@ -1,9 +1,9 @@
-package com.mikkipastel.soundboard.list
+package com.mikkipastel.soundboard.view.button
 
 import androidx.recyclerview.widget.RecyclerView
 import com.mikkipastel.soundboard.databinding.ItemChooseSoundBinding
 
-class ChooseSoundViewHolder(
+class ButtonSoundViewHolder(
     private val itemBinding: ItemChooseSoundBinding
 ) : RecyclerView.ViewHolder(itemBinding.root){
 

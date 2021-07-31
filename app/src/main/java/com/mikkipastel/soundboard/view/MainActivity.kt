@@ -1,7 +1,8 @@
-package com.mikkipastel.soundboard
+package com.mikkipastel.soundboard.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mikkipastel.soundboard.R
 import com.mikkipastel.soundboard.databinding.ActivityMainBinding
 
 class MainActivity: AppCompatActivity() {

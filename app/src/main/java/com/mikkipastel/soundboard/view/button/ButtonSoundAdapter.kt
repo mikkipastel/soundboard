@@ -1,4 +1,4 @@
-package com.mikkipastel.soundboard.button
+package com.mikkipastel.soundboard.view.button
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

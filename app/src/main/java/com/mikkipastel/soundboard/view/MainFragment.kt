@@ -1,4 +1,4 @@
-package com.mikkipastel.soundboard
+package com.mikkipastel.soundboard.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
