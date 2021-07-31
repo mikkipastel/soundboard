@@ -1,10 +1,8 @@
 package com.mikkipastel.soundboard.view.button
 
-import android.content.res.ColorStateList
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mikkipastel.soundboard.R
-import com.mikkipastel.soundboard.databinding.ItemChooseSoundBinding
 import com.mikkipastel.soundboard.databinding.ItemSoundButtonBinding
 import com.mikkipastel.soundboard.model.SaveSoundPad
 
