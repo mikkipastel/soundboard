@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mikkipastel.soundboard.databinding.ItemSoundButtonBinding
+import com.mikkipastel.soundboard.model.SaveSoundPad
 
 class ButtonSoundAdapter(
+    private val padList: ArrayList<SaveSoundPad>,
     private val listener: ButtonSoundListener
 ): RecyclerView.Adapter<ButtonSoundViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonSoundViewHolder {
@@ -19,8 +21,12 @@ class ButtonSoundAdapter(
     }
 
     override fun onBindViewHolder(holder: ButtonSoundViewHolder, position: Int) {
-        holder.bindView(listener)
+        holder.bindView(
+            position,
+            padList?.get(position),
+            listener
+        )
     }
 
-    override fun getItemCount(): Int = 8
+    override fun getItemCount(): Int = padList.size
 }

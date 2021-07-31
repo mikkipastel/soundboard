@@ -11,3 +11,8 @@ data class Soundboard(
     @SerializedName("name") val name: String?,
     @SerializedName("mp3") val mp3: String?
 )
+
+data class SaveSoundPad(
+    @SerializedName("position") val position: Int,
+    @SerializedName("sound") val sound: Soundboard?
+)
