@@ -7,7 +7,7 @@
     },
     {
       "emoji": "❌",
-      "name": "error",
+      "name": "Windows XP Error",
       "mp3": "error.mp3"
     },
     {
@@ -39,6 +39,86 @@
       "emoji": "\uD83C\uDFC3",
       "name": "Run",
       "mp3": "run.mp3"
+    },
+    {
+      "emoji": "\uD83E\uDD41",
+      "name": "Joke Drum Effect",
+      "mp3": "joke_drum_effect.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDCEF",
+      "name": "Air Horn (club sample)",
+      "mp3": "air-horn-club-sample.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDE4C",
+      "name": "Hallelujah",
+      "mp3": "hallelujah.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDE2E",
+      "name": "Wow",
+      "mp3": "wow.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDC4A",
+      "name": "Punch",
+      "mp3": "punch.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDCB0",
+      "name": "Coin Mario",
+      "mp3": "super-mario-coin-sound.mp3"
+    },
+    {
+      "emoji": "\uD83C\uDFAD",
+      "name": "Drama",
+      "mp3": "drama.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDC4F",
+      "name": "Clapping",
+      "mp3": "clapping.mp3"
+    },
+    {
+      "emoji": "\uD83C\uDF20",
+      "name": "Shooting Stars",
+      "mp3": "shooting-stars.mp3"
+    },
+    {
+      "emoji": "✈️",
+      "name": "i believe i can fly",
+      "mp3": "i_believe-i-can-fly.mp3"
+    },
+    {
+      "emoji": "\uD83E\uDD97",
+      "name": "Crickets",
+      "mp3": "crickets.mp3"
+    },
+    {
+      "emoji": "☹️\uD83C\uDFBB",
+      "name": "Sad Violin",
+      "mp3": "sad_violin.mp3"
+    },
+    {
+      "emoji": "☹️\uD83C\uDFBA",
+      "name": "Sad Trombone",
+      "mp3": "sad_trombone.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDECE️",
+      "name": "Ding!",
+      "mp3": "ding.mp3"
+    },
+    {
+      "emoji": "\uD83E\uDD41️",
+      "name": "Drumroll",
+      "mp3": "drumroll.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDD18️",
+      "name": "Windows XP Start",
+      "mp3": "windows-xp-start.mp3"
     }
   ]
 }
