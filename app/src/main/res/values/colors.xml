@@ -13,8 +13,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="disable">#E0E0E0</color>
-    <color name="enable">#FFFF00</color>
+    <color name="padDisable">#E0E0E0</color>
+    <color name="padEnable">#FFFF00</color>
     <color name="background">#EEEEEE</color>
 
     <color name="lineColor">#E5E5E5</color>

@@ -35,8 +35,8 @@ class ButtonSoundViewHolder(
                     ContextCompat.getColor(
                         root.context,
                         when (pad?.sound != null) {
-                            true -> R.color.colorPrimary
-                            false -> R.color.disable
+                            true -> R.color.padEnable
+                            false -> R.color.padDisable
                         }
                     )
                 )
