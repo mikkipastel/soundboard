@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">soundboard</string>
+
+    <string name="title_choose_sound">Choose sound effect</string>
 </resources>
