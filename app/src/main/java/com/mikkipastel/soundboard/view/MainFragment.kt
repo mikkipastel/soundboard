@@ -53,8 +53,8 @@ class MainFragment: Fragment(), ButtonSoundListener {
                     "tada.mp3",
                 )
             ),
-            SaveSoundPad(1, null),
-            SaveSoundPad(2, null),
+            SaveSoundPad(1),
+            SaveSoundPad(2),
             SaveSoundPad(
                 3,
                 Soundboard(
@@ -63,10 +63,10 @@ class MainFragment: Fragment(), ButtonSoundListener {
                     "kids_cheering.mp3",
                 )
             ),
-            SaveSoundPad(4, null),
-            SaveSoundPad(5, null),
-            SaveSoundPad(6, null),
-            SaveSoundPad(7, null),
+            SaveSoundPad(4),
+            SaveSoundPad(5),
+            SaveSoundPad(6),
+            SaveSoundPad(7),
         ),this)
 
         binding.recyclerView.apply {
@@ -86,8 +86,8 @@ class MainFragment: Fragment(), ButtonSoundListener {
         player.playWhenReady = true
     }
 
-    override fun chooseSound(padPosition: Int) {
-        ChooseSoundBottomSheet.newInstance()
+    override fun chooseSound(padData: SaveSoundPad) {
+        ChooseSoundBottomSheet.newInstance(padData)
             .show(
                 parentFragmentManager,
                 "chooseSoundBottomSheet"

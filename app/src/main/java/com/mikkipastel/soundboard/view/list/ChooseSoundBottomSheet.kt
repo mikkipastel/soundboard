@@ -14,6 +14,7 @@ import com.google.android.exoplayer2.upstream.DataSource.Factory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mikkipastel.soundboard.R
 import com.mikkipastel.soundboard.databinding.FragmentChooseSoundBottomBinding
+import com.mikkipastel.soundboard.model.SaveSoundPad
 import com.mikkipastel.soundboard.model.Soundboard
 import com.mikkipastel.soundboard.utils.setLocalSoundList
 
@@ -24,11 +25,21 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
     private lateinit var player: SimpleExoPlayer
 
+    private val padData by lazy {
+        arguments?.getParcelable<SaveSoundPad>(BUNDLE_PAD_DATA)
+    }
+
     private var currentPlayPosition = -1
     private var currentChoosePosition = -1
 
     companion object {
-        fun newInstance() = ChooseSoundBottomSheet()
+        const val BUNDLE_PAD_DATA = "ChooseSoundBottomSheet:BUNDLE_PAD_DATA"
+
+        fun newInstance(padData: SaveSoundPad) = ChooseSoundBottomSheet().apply {
+            arguments = Bundle().apply {
+                putParcelable(BUNDLE_PAD_DATA, padData)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +62,7 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         player = SimpleExoPlayer.Builder(requireContext()).build()
 
         soundListAdapter = ChooseSoundAdapter(
+            padData!!,
             setLocalSoundList(requireContext()),
             this
         )

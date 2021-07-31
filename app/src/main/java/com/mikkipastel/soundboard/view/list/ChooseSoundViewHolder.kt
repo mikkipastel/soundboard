@@ -5,14 +5,15 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mikkipastel.soundboard.R
 import com.mikkipastel.soundboard.databinding.ItemChooseSoundBinding
+import com.mikkipastel.soundboard.model.SaveSoundPad
 import com.mikkipastel.soundboard.model.Soundboard
 
 class ChooseSoundViewHolder(
     private val itemBinding: ItemChooseSoundBinding
-) : RecyclerView.ViewHolder(itemBinding.root){
+) : RecyclerView.ViewHolder(itemBinding.root) {
 
     fun bindView(
-        position: Int,
+        padData: SaveSoundPad,
         soundboard: Soundboard,
         listener: ChooseSoundListener
     ) {
@@ -20,7 +21,7 @@ class ChooseSoundViewHolder(
             root.setOnClickListener {
                 if (imageChoose.visibility == View.GONE) {
                     checkChooseSound()
-                    listener.updateSound(position, soundboard)
+                    listener.updateSound(padData.position, soundboard)
                 }
             }
             iconPlayPause.setOnClickListener {
@@ -41,7 +42,10 @@ class ChooseSoundViewHolder(
                 }
             }
             textSoundName.text = "${soundboard.emoji} ${soundboard.name}"
-            //imageChoose.visibility : check with choose sound
+
+            if (soundboard == padData.sound) {
+                imageChoose.visibility = View.VISIBLE
+            }
         }
     }
 

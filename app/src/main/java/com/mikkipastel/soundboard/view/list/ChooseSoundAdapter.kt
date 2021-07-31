@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mikkipastel.soundboard.databinding.ItemChooseSoundBinding
+import com.mikkipastel.soundboard.model.SaveSoundPad
 import com.mikkipastel.soundboard.model.Soundboard
 
 class ChooseSoundAdapter(
+    private val padData: SaveSoundPad,
     private val soundList: ArrayList<Soundboard>?,
     private val listener: ChooseSoundListener
 ): RecyclerView.Adapter<ChooseSoundViewHolder>() {
@@ -21,7 +23,7 @@ class ChooseSoundAdapter(
     }
 
     override fun onBindViewHolder(holder: ChooseSoundViewHolder, position: Int) {
-        soundList?.get(position)?.let { holder.bindView(position, it, listener) }
+        soundList?.get(position)?.let { holder.bindView(padData, it, listener) }
     }
 
     override fun getItemCount(): Int = soundList?.size!!

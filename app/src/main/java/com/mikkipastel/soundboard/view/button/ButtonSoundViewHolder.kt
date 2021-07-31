@@ -11,27 +11,26 @@ class ButtonSoundViewHolder(
 ) : RecyclerView.ViewHolder(itemBinding.root){
 
     fun bindView(
-        position: Int,
-        pad: SaveSoundPad?,
+        pad: SaveSoundPad,
         listener: ButtonSoundListener
     ) {
         itemBinding.apply {
             button.apply {
                 setOnClickListener {
-                    when (pad?.sound != null) {
-                        true -> listener.playSound(pad?.sound?.mp3!!)
-                        false -> listener.chooseSound(position)
+                    when (pad.sound != null) {
+                        true -> listener.playSound(pad.sound.mp3!!)
+                        false -> listener.chooseSound(pad)
                     }
                 }
                 setOnLongClickListener {
-                    listener.chooseSound(position)
+                    listener.chooseSound(pad)
                     return@setOnLongClickListener false
                 }
-                button.text = pad?.sound?.emoji
+                button.text = pad.sound?.emoji
 
                 background = ContextCompat.getDrawable(
                     root.context,
-                    when (pad?.sound != null) {
+                    when (pad.sound != null) {
                         true -> R.drawable.background_button_pad_enable
                         false -> R.drawable.background_button_pad_disable
                     }
@@ -43,5 +42,5 @@ class ButtonSoundViewHolder(
 
 interface ButtonSoundListener {
     fun playSound(mp3: String)
-    fun chooseSound(padPosition: Int)
+    fun chooseSound(padData: SaveSoundPad)
 }
