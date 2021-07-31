@@ -14,13 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_gravity="center"
             android:textSize="30sp"
             android:textColor="@color/textColor"
-            android:layout_gravity="center"
             tools:text="🧒📣"/>
 
     </FrameLayout>
