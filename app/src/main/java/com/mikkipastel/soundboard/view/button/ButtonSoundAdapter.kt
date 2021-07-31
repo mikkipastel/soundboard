@@ -23,7 +23,7 @@ class ButtonSoundAdapter(
     override fun onBindViewHolder(holder: ButtonSoundViewHolder, position: Int) {
         holder.bindView(
             position,
-            padList?.get(position),
+            padList[position],
             listener
         )
     }
