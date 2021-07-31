@@ -23,7 +23,9 @@ class ButtonSoundViewHolder(
                     }
                 }
                 setOnLongClickListener {
-                    listener.chooseSound(pad)
+                    if (pad.sound != null) {
+                        listener.chooseSound(pad)
+                    }
                     return@setOnLongClickListener false
                 }
                 button.text = pad.sound?.emoji
