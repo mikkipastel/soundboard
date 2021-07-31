@@ -4,8 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mikkipastel.soundboard.databinding.ItemChooseSoundBinding
+import com.mikkipastel.soundboard.model.Soundboard
 
-class ChooseSoundAdapter(): RecyclerView.Adapter<ChooseSoundViewHolder>() {
+class ChooseSoundAdapter(
+    private val soundList: ArrayList<Soundboard>?,
+    private val listener: ChooseSoundListener
+): RecyclerView.Adapter<ChooseSoundViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChooseSoundViewHolder {
         return ChooseSoundViewHolder(
             ItemChooseSoundBinding.inflate(
@@ -17,8 +21,8 @@ class ChooseSoundAdapter(): RecyclerView.Adapter<ChooseSoundViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ChooseSoundViewHolder, position: Int) {
-        holder.bindView()
+        soundList?.get(position)?.let { holder.bindView(it, listener) }
     }
 
-    override fun getItemCount(): Int = 8
+    override fun getItemCount(): Int = soundList?.size!!
 }

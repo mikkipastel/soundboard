@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -28,19 +29,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/textColor"
         android:fontFamily="@font/roboto"
         android:lineSpacingExtra="5sp"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/iconPlayPause"
         app:layout_constraintStart_toEndOf="@id/iconPlayPause"
         app:layout_constraintTop_toTopOf="@id/iconPlayPause"
         tools:text="🧒📣 Kids Cheering" />
 
     <ImageView
+        android:id="@+id/imageChoose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/ic_choose"
         android:visibility="gone"
         app:layout_constraintTop_toTopOf="@id/iconPlayPause"

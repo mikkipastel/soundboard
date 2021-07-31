@@ -14,7 +14,7 @@
         android:layout_marginStart="24dp"
         android:fontFamily="@font/roboto"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textColor="@color/black"
         android:text="@string/title_choose_sound"
         app:layout_constraintTop_toTopOf="parent"
