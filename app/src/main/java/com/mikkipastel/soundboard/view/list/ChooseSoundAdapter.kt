@@ -21,8 +21,12 @@ class ChooseSoundAdapter(
     }
 
     override fun onBindViewHolder(holder: ChooseSoundViewHolder, position: Int) {
-        soundList?.get(position)?.let { holder.bindView(it, listener) }
+        soundList?.get(position)?.let { holder.bindView(position, it, listener) }
     }
 
     override fun getItemCount(): Int = soundList?.size!!
+
+    fun setPlaySoundIcon(holder: RecyclerView.ViewHolder?) {
+        (holder as ChooseSoundViewHolder).setPlaySoundIcon()
+    }
 }

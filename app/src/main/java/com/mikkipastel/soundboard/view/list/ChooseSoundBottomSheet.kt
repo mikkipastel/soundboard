@@ -1,10 +1,16 @@
 package com.mikkipastel.soundboard.view.list
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.upstream.AssetDataSource
+import com.google.android.exoplayer2.upstream.DataSource.Factory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mikkipastel.soundboard.R
 import com.mikkipastel.soundboard.databinding.FragmentChooseSoundBottomBinding
@@ -15,6 +21,10 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
     private lateinit var binding: FragmentChooseSoundBottomBinding
     private lateinit var soundListAdapter: ChooseSoundAdapter
+
+    private lateinit var player: SimpleExoPlayer
+
+    private var currentPosition = -1
 
     companion object {
         fun newInstance() = ChooseSoundBottomSheet()
@@ -37,6 +47,8 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        player = SimpleExoPlayer.Builder(requireContext()).build()
+
         soundListAdapter = ChooseSoundAdapter(
             setLocalSoundList(requireContext()),
             this
@@ -48,12 +60,46 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         }
     }
 
-    override fun playSound(mp3: String?) {
-        //play with player
+    override fun onDestroy() {
+        player.release()
+        super.onDestroy()
+    }
+
+    override fun playSound(position: Int, mp3: String?) {
+        resetPlaySoundButton()
+
+        val path = "assets:///sound/$mp3"
+        val dataSourceFactory = Factory { AssetDataSource(requireContext()) }
+        val mediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
+            .createMediaSource(Uri.parse(path))
+
+        player.addListener(object: Player.Listener {
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                if (!isPlaying) {
+                    resetPlaySoundButton()
+                }
+            }
+        })
+        player.setMediaSource(mediaSource)
+        player.prepare()
+        player.playWhenReady = true
+
+        currentPosition = position
+    }
+
+    override fun pauseSound() {
+        player.playWhenReady = false
     }
 
     override fun updateSound(soundboard: Soundboard) {
         //update viewmodel
+    }
+
+    private fun resetPlaySoundButton() {
+        if (currentPosition >= 0) {
+            val holder = binding.recyclerView.findViewHolderForLayoutPosition(currentPosition)
+            soundListAdapter.setPlaySoundIcon(holder)
+        }
     }
 
 }

@@ -33,12 +33,12 @@
     {
       "emoji": "⏫️",
       "name": "Level up!",
-      "mp3": "level-up.mp3"
+      "mp3": "level_up.mp3"
     },
     {
       "emoji": "\uD83C\uDFC3",
       "name": "Run",
-      "mp3": "level-up.mp3"
+      "mp3": "run.mp3"
     }
   ]
 }
