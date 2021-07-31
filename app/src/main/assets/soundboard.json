@@ -1,0 +1,39 @@
+{
+  "sound": [
+    {
+      "emoji": "✅⭕",
+      "name": "correct",
+      "mp3": "correct.mp3"
+    },
+    {
+      "emoji": "❌",
+      "name": "error",
+      "mp3": "error.mp3"
+    },
+    {
+      "emoji": "❌",
+      "name": "wrong",
+      "mp3": "wrong.mp3"
+    },
+    {
+      "emoji": "\uD83C\uDF89",
+      "name": "tada",
+      "mp3": "tada.mp3"
+    },
+    {
+      "emoji": "\uD83E\uDDD2\uD83D\uDCE3",
+      "name": "kids_cheering",
+      "mp3": "kids_cheering.mp3"
+    },
+    {
+      "emoji": "✌️",
+      "name": "Victory!",
+      "mp3": "victory.mp3"
+    },
+    {
+      "emoji": "⏫️",
+      "name": "Level up!",
+      "mp3": "level-up.mp3"
+    }
+  ]
+}
