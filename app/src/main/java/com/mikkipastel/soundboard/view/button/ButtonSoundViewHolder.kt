@@ -38,16 +38,6 @@ class ButtonSoundViewHolder(
                         false -> R.drawable.background_button_pad_disable
                     }
                 )
-
-//                backgroundTintList = ColorStateList.valueOf(
-//                    ContextCompat.getColor(
-//                        root.context,
-//                        when (pad?.sound != null) {
-//                            true -> R.color.padEnable
-//                            false -> R.color.padDisable
-//                        }
-//                    )
-//                )
             }
         }
     }
