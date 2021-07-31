@@ -20,7 +20,7 @@ class ChooseSoundViewHolder(
             root.setOnClickListener {
                 if (imageChoose.visibility == View.GONE) {
                     checkChooseSound()
-                    listener.updateSound(soundboard)
+                    listener.updateSound(position, soundboard)
                 }
             }
             iconPlayPause.setOnClickListener {
@@ -75,5 +75,5 @@ class ChooseSoundViewHolder(
 interface ChooseSoundListener {
     fun playSound(position: Int, mp3: String?)
     fun pauseSound()
-    fun updateSound(soundboard: Soundboard)
+    fun updateSound(position: Int, soundboard: Soundboard)
 }

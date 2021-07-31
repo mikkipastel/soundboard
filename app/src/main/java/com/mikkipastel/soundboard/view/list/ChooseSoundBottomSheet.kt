@@ -24,7 +24,8 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
     private lateinit var player: SimpleExoPlayer
 
-    private var currentPosition = -1
+    private var currentPlayPosition = -1
+    private var currentChoosePosition = -1
 
     companion object {
         fun newInstance() = ChooseSoundBottomSheet()
@@ -84,21 +85,32 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         player.prepare()
         player.playWhenReady = true
 
-        currentPosition = position
+        currentPlayPosition = position
     }
 
     override fun pauseSound() {
         player.playWhenReady = false
     }
 
-    override fun updateSound(soundboard: Soundboard) {
+    override fun updateSound(position: Int, soundboard: Soundboard) {
+        resetChooseSound()
+
         //update viewmodel
+
+        currentChoosePosition = position
     }
 
     private fun resetPlaySoundButton() {
-        if (currentPosition >= 0) {
-            val holder = binding.recyclerView.findViewHolderForLayoutPosition(currentPosition)
+        if (currentPlayPosition >= 0) {
+            val holder = binding.recyclerView.findViewHolderForLayoutPosition(currentPlayPosition)
             soundListAdapter.setPlaySoundIcon(holder)
+        }
+    }
+
+    private fun resetChooseSound() {
+        if (currentChoosePosition >= 0) {
+            val holder = binding.recyclerView.findViewHolderForLayoutPosition(currentChoosePosition)
+            soundListAdapter.unCheckChooseSound(holder)
         }
     }
 

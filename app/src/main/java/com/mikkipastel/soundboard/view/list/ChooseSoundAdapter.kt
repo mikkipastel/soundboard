@@ -29,4 +29,8 @@ class ChooseSoundAdapter(
     fun setPlaySoundIcon(holder: RecyclerView.ViewHolder?) {
         (holder as ChooseSoundViewHolder).setPlaySoundIcon()
     }
+
+    fun unCheckChooseSound(holder: RecyclerView.ViewHolder?) {
+        (holder as ChooseSoundViewHolder).unCheckChooseSound()
+    }
 }
