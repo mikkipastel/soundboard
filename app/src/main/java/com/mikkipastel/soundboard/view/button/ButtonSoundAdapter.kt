@@ -3,7 +3,6 @@ package com.mikkipastel.soundboard.view.button
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mikkipastel.soundboard.databinding.ItemChooseSoundBinding
 import com.mikkipastel.soundboard.databinding.ItemSoundButtonBinding
 
 class ButtonSoundAdapter(
