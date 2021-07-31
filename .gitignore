@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+/.idea/
+.idea/
+*.log
+features/search/build/
+**/build/
