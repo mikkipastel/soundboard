@@ -41,17 +41,16 @@ class SoundPadViewModel(
     }
 
     fun initDatabase() = viewModelScope.launch {
-        for (i in 0..8) {
+        val initList = mutableListOf<SaveSoundPad>()
+        for (i in 0..7) {
             val pad = SaveSoundPad(
                 i,
                 null
             )
             insertSoundPad(pad)
+            initList.add(pad)
         }
 
-        val response = withContext(Dispatchers.IO) {
-            dao.getSoundPad()
-        }
-        soundPadList.value = response
+        soundPadList.value = initList
     }
 }
