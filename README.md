@@ -1,5 +1,6 @@
 # Emoji Soundboard
 แอพพลิเคชั่น soundboard ที่ใช้ emoji ในการช่วยจำว่าช่องนี้เราใส่เสียงอะไรไว้บ้าง เป็นแอพแอนดรอยด์
+(ผลงานระหหว่างร่วมงาน Stupid Hackathon Thailand 5)
 
 ## คุณเคยประสบปัญหาเหล่านี้หรือไหม?
 - หา sound effect เหมาะๆเปิดไม่ได้
@@ -27,9 +28,21 @@
 ## Screenshot
 
 หน้าตาของแอพ Emoji Soundboard
+ตัวแอพมีเสียงทั้งสิ้น 25 เสียงด้วยกันในตอนนี้
 
 <p float="center">
   <img src="/readme/03_screen_shot_empty.png" width="200">
   <img src="/readme/04_screen_shot_choose_sound.png" width="200">
   <img src="/readme/05_screen_shot_pad.png" width="200">
 </p>
+
+## Download
+รอแก้บัคก่อน เดี๋ยวเอาขึ้น Play Store นะ
+
+### Bug list
+
+เดี๋ยวจะมาเก็บต่อจ้า
+*  [หน้าเลือกเสียง] item สุดท้ายในหน้าเลือกเสียง ดันไม่ขึ้น
+*  [หน้าเลือกเสียง] มีบาง view ที่แสดงเบิ้ลอยู่
+*  [หน้าเลือกเสียง] เมื่อทำการ reset view แล้ว app crash เนื่องจากหา view holder ไม่เจออ
+*  [หน้าหลัก] ปัญหาการแสดง position หลังจากกลับเข้าแอพมาใหม่ 
