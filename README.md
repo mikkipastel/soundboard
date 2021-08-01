@@ -12,7 +12,7 @@
 ตัวแอพจะมี 8 ช่อง เพื่อให้พอดีกับขนาดนหน้าจอให้มากที่สุด
 ใช้ emoji ของเสียง เพื่อให้สามารถรู้ได้ว่า ช่องนี้ใส่เสียงอะไร
 
-![app idea](/readme/01_idea.png)
+<img src="/readme/01_idea.png" width="500">
 
 หน้าจอการทำงานคร่าวๆ ออกแบบบน Figma
 จะมีหน้าจอ Splash Screen เข้ามาก่อน
@@ -22,4 +22,10 @@
 
 หน้าที่เลือกเสียงเราสามารถ preview เสียงก่อนเลือกได้ด้วยนะ
 
-![app idea](/readme/02_figma_design.png)
+![figma](/readme/02_figma_design.png)
+
+## Screenshot
+
+<img src="/readme/03_screen_shot_empty.png" width="200">
+<img src="/readme/04_screen_shot_choose_sound.png" width="200">
+<img src="/readme/05_screen_shot_pad.png" width="200">
