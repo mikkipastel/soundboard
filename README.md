@@ -26,6 +26,10 @@
 
 ## Screenshot
 
-<img src="/readme/03_screen_shot_empty.png" width="200">
-<img src="/readme/04_screen_shot_choose_sound.png" width="200">
-<img src="/readme/05_screen_shot_pad.png" width="200">
+หน้าตาของแอพ Emoji Soundboard
+
+<p float="center">
+  <img src="/readme/03_screen_shot_empty.png" width="200">
+  <img src="/readme/04_screen_shot_choose_sound.png" width="200">
+  <img src="/readme/05_screen_shot_pad.png" width="200">
+</p>
