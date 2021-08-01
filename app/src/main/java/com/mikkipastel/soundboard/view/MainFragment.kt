@@ -17,10 +17,14 @@ import com.mikkipastel.soundboard.model.Soundboard
 import com.mikkipastel.soundboard.view.button.ButtonSoundAdapter
 import com.mikkipastel.soundboard.view.button.ButtonSoundListener
 import com.mikkipastel.soundboard.view.list.ChooseSoundBottomSheet
+import com.mikkipastel.soundboard.viewmodel.SoundPadViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class MainFragment: Fragment(), ButtonSoundListener {
 
     private lateinit var binding: FragmentMainBinding
+
+    private val soundPadViewModel: SoundPadViewModel by sharedViewModel()
 
     private lateinit var buttonAdapter: ButtonSoundAdapter
 
@@ -34,7 +38,7 @@ class MainFragment: Fragment(), ButtonSoundListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -44,31 +48,27 @@ class MainFragment: Fragment(), ButtonSoundListener {
 
         player = SimpleExoPlayer.Builder(requireContext()).build()
 
-        buttonAdapter = ButtonSoundAdapter(arrayListOf(
-            SaveSoundPad(
-                0,
-                Soundboard(
-                    "\uD83C\uDF89",
-                    "tada",
-                    "tada.mp3",
-                )
-            ),
-            SaveSoundPad(1),
-            SaveSoundPad(2),
-            SaveSoundPad(
-                3,
-                Soundboard(
-                    "\uD83E\uDDD2\uD83D\uDCE3",
-                    "kids_cheering",
-                    "kids_cheering.mp3",
-                )
-            ),
-            SaveSoundPad(4),
-            SaveSoundPad(5),
-            SaveSoundPad(6),
-            SaveSoundPad(7),
-        ),this)
+        attachObserver()
+    }
 
+    private fun attachObserver() {
+        soundPadViewModel.soundPadList.observe(viewLifecycleOwner, {
+            when (it.size == 0) {
+                true -> soundPadViewModel.initDatabase()
+                false -> initSoundPad(it)
+            }
+        })
+        soundPadViewModel.soundPadUpdate.observe(viewLifecycleOwner, {
+            buttonAdapter.padList[it.position] = it
+            buttonAdapter.notifyItemChanged(it.position)
+        })
+    }
+
+    private fun initSoundPad(padList: MutableList<SaveSoundPad>) {
+        buttonAdapter = ButtonSoundAdapter(
+            padList,
+            this
+        )
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = buttonAdapter

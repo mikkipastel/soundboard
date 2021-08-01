@@ -17,11 +17,15 @@ import com.mikkipastel.soundboard.databinding.FragmentChooseSoundBottomBinding
 import com.mikkipastel.soundboard.model.SaveSoundPad
 import com.mikkipastel.soundboard.model.Soundboard
 import com.mikkipastel.soundboard.utils.setLocalSoundList
+import com.mikkipastel.soundboard.viewmodel.SoundPadViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
     private lateinit var binding: FragmentChooseSoundBottomBinding
     private lateinit var soundListAdapter: ChooseSoundAdapter
+
+    private val soundPadViewModel: SoundPadViewModel by sharedViewModel()
 
     private lateinit var player: SimpleExoPlayer
 
@@ -61,15 +65,17 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
         player = SimpleExoPlayer.Builder(requireContext()).build()
 
+        val soundList = setLocalSoundList(requireContext())
         soundListAdapter = ChooseSoundAdapter(
             padData!!,
-            setLocalSoundList(requireContext()),
+            soundList,
             this
         )
 
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = soundListAdapter
+            setItemViewCacheSize(soundList?.size!!)
         }
     }
 
@@ -107,7 +113,12 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
     override fun updateSound(position: Int, soundboard: Soundboard) {
         resetChooseSound()
 
-        //update viewmodel
+        soundPadViewModel.updateSoundPad(
+            SaveSoundPad(
+                position,
+                soundboard
+            )
+        )
 
         currentChoosePosition = position
     }

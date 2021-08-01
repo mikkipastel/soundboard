@@ -7,7 +7,7 @@ import com.mikkipastel.soundboard.databinding.ItemSoundButtonBinding
 import com.mikkipastel.soundboard.model.SaveSoundPad
 
 class ButtonSoundAdapter(
-    private val padList: ArrayList<SaveSoundPad>,
+    var padList: MutableList<SaveSoundPad>,
     private val listener: ButtonSoundListener
 ): RecyclerView.Adapter<ButtonSoundViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonSoundViewHolder {

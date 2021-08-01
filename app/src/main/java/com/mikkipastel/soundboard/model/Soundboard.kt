@@ -1,7 +1,11 @@
 package com.mikkipastel.soundboard.model
 
 import android.os.Parcelable
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.mikkipastel.soundboard.dao.SoundPadTable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -16,8 +20,9 @@ data class Soundboard(
     @SerializedName("mp3") val mp3: String?
 ): Parcelable
 
+@Entity(tableName = SoundPadTable)
 @Parcelize
 data class SaveSoundPad(
-    @SerializedName("position") val position: Int,
-    @SerializedName("sound") val sound: Soundboard? = null
+    @PrimaryKey(autoGenerate = true) @SerializedName("position") val position: Int,
+    @Embedded @SerializedName("sound") val sound: Soundboard?
 ): Parcelable
