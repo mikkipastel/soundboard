@@ -72,6 +72,11 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
             this
         )
 
+        padData?.let { padData ->
+            currentChoosePosition = soundList?.indexOf(padData.sound) ?: -1
+        }
+
+
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = soundListAdapter
