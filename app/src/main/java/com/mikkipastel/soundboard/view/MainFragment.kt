@@ -47,6 +47,7 @@ class MainFragment: Fragment(), ButtonSoundListener {
         super.onViewCreated(view, savedInstanceState)
 
         player = SimpleExoPlayer.Builder(requireContext()).build()
+        buttonAdapter = ButtonSoundAdapter(this)
 
         attachObserver()
     }
@@ -59,16 +60,16 @@ class MainFragment: Fragment(), ButtonSoundListener {
             }
         })
         soundPadViewModel.soundPadUpdate.observe(viewLifecycleOwner, {
-            buttonAdapter.padList[it.position] = it
-            buttonAdapter.notifyItemChanged(it.position)
+            val buttonViewPosition = it.position-1
+            buttonAdapter.apply {
+                padList[buttonViewPosition] = it
+                notifyItemChanged(buttonViewPosition)
+            }
         })
     }
 
     private fun initSoundPad(padList: MutableList<SaveSoundPad>) {
-        buttonAdapter = ButtonSoundAdapter(
-            padList,
-            this
-        )
+        buttonAdapter.padList = padList
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = buttonAdapter
