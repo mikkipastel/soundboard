@@ -11,6 +11,7 @@ import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.AssetDataSource
 import com.google.android.exoplayer2.upstream.DataSource.Factory
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mikkipastel.soundboard.R
 import com.mikkipastel.soundboard.databinding.FragmentChooseSoundBottomBinding
@@ -44,6 +45,12 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
                 putParcelable(BUNDLE_PAD_DATA, padData)
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val behavior = BottomSheetBehavior.from(requireView().parent as View)
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
