@@ -119,6 +119,16 @@
       "emoji": "\uD83D\uDD18️",
       "name": "Windows XP Start",
       "mp3": "windows-xp-start.mp3"
+    },
+    {
+      "emoji": "\uD83D\uDE02️",
+      "name": "Laughter Short",
+      "mp3": "laughter-short.mp3"
+    },
+    {
+      "emoji": "\uD83E\uDD41\uD83D\uDE02️",
+      "name": "Laughter with ba dum",
+      "mp3": "ba-dum-tiss-with-laughter.mp3"
     }
   ]
 }
