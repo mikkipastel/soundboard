@@ -15,6 +15,7 @@ class ChooseSoundViewHolder(
     fun bindView(
         padData: SaveSoundPad,
         soundboard: Soundboard,
+        position: Int,
         listener: ChooseSoundListener
     ) {
         itemBinding.apply {
@@ -58,7 +59,7 @@ class ChooseSoundViewHolder(
         )
     }
 
-    private fun setPauseSoundIcon() {
+    fun setPauseSoundIcon() {
         itemBinding.iconPlayPause.setImageDrawable(
             ContextCompat.getDrawable(
                 itemBinding.root.context,
@@ -67,7 +68,7 @@ class ChooseSoundViewHolder(
         )
     }
 
-    private fun checkChooseSound() {
+    fun checkChooseSound() {
         itemBinding.imageChoose.visibility = View.VISIBLE
     }
 

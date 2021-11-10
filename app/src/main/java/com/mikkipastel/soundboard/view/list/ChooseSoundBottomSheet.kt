@@ -97,7 +97,7 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
     }
 
     override fun playSound(position: Int, mp3: String?) {
-        resetPlaySoundButton()
+        soundListAdapter.playSoundMp3 = mp3
 
         val path = "assets:///sound/$mp3"
         val dataSourceFactory = Factory { AssetDataSource(requireContext()) }
@@ -107,7 +107,7 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         player.addListener(object: Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 if (!isPlaying) {
-                    resetPlaySoundButton()
+                    soundListAdapter.playSoundMp3 = mp3
                 }
             }
         })
@@ -123,7 +123,7 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
     }
 
     override fun updateSound(position: Int, soundboard: Soundboard) {
-        resetChooseSound()
+        soundListAdapter.chooseSound = soundboard
 
         soundPadViewModel.updateSoundPad(
             SaveSoundPad(
@@ -134,19 +134,4 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
         currentChoosePosition = position
     }
-
-    private fun resetPlaySoundButton() {
-        if (currentPlayPosition >= 0) {
-            val holder = binding.recyclerView.findViewHolderForLayoutPosition(currentPlayPosition)
-            soundListAdapter.setPlaySoundIcon(holder)
-        }
-    }
-
-    private fun resetChooseSound() {
-        if (currentChoosePosition >= 0) {
-            val holder = binding.recyclerView.findViewHolderForLayoutPosition(currentChoosePosition)
-            soundListAdapter.unCheckChooseSound(holder)
-        }
-    }
-
 }

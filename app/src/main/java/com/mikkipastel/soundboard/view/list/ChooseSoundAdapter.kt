@@ -12,6 +12,19 @@ class ChooseSoundAdapter(
     private val soundList: ArrayList<Soundboard>?,
     private val listener: ChooseSoundListener
 ): RecyclerView.Adapter<ChooseSoundViewHolder>() {
+
+    var chooseSound: Soundboard?= null
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    var playSoundMp3: String?= null
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChooseSoundViewHolder {
         return ChooseSoundViewHolder(
             ItemChooseSoundBinding.inflate(
@@ -23,16 +36,20 @@ class ChooseSoundAdapter(
     }
 
     override fun onBindViewHolder(holder: ChooseSoundViewHolder, position: Int) {
-        soundList?.get(position)?.let { holder.bindView(padData, it, listener) }
+        soundList?.get(position)?.let {
+            holder.bindView(padData, it, position, listener)
+
+            when (it == chooseSound) {
+                true -> holder.checkChooseSound()
+                false -> holder.unCheckChooseSound()
+            }
+
+            when (it.mp3 == playSoundMp3) {
+                true -> holder.setPauseSoundIcon()
+                false -> holder.setPlaySoundIcon()
+            }
+        }
     }
 
     override fun getItemCount(): Int = soundList?.size!!
-
-    fun setPlaySoundIcon(holder: RecyclerView.ViewHolder?) {
-        (holder as ChooseSoundViewHolder).setPlaySoundIcon()
-    }
-
-    fun unCheckChooseSound(holder: RecyclerView.ViewHolder?) {
-        (holder as ChooseSoundViewHolder).unCheckChooseSound()
-    }
 }

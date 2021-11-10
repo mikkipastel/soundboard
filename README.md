@@ -28,7 +28,7 @@
 ## Screenshot
 
 หน้าตาของแอพ Emoji Soundboard
-ตัวแอพมีเสียงทั้งสิ้น 25 เสียงด้วยกันในตอนนี้
+ตัวแอพมีเสียงทั้งสิ้น 27 เสียงด้วยกันในตอนนี้
 
 <p float="center">
   <img src="/readme/03_screen_shot_empty.png" width="200">
@@ -42,4 +42,4 @@
 ### Bug list
 
 เดี๋ยวจะมาเก็บต่อจ้า
-*  [หน้าเลือกเสียง] app crash เนื่องจากหา view holder ไม่เจอ
+*  [หน้าหลัก] index ไม่ตรง
