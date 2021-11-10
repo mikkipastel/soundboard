@@ -34,9 +34,6 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         arguments?.getParcelable<SaveSoundPad>(BUNDLE_PAD_DATA)
     }
 
-    private var currentPlayPosition = -1
-    private var currentChoosePosition = -1
-
     companion object {
         const val BUNDLE_PAD_DATA = "ChooseSoundBottomSheet:BUNDLE_PAD_DATA"
 
@@ -79,11 +76,6 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
             this
         )
 
-        padData?.let { padData ->
-            currentChoosePosition = soundList?.indexOf(padData.sound) ?: -1
-        }
-
-
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = soundListAdapter
@@ -114,8 +106,6 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         player.setMediaSource(mediaSource)
         player.prepare()
         player.playWhenReady = true
-
-        currentPlayPosition = position
     }
 
     override fun pauseSound() {
@@ -127,11 +117,10 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
         soundPadViewModel.updateSoundPad(
             SaveSoundPad(
+                position + 1,
                 position,
                 soundboard
             )
         )
-
-        currentChoosePosition = position
     }
 }
