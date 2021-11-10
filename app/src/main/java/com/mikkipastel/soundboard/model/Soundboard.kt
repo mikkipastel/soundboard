@@ -23,6 +23,7 @@ data class Soundboard(
 @Entity(tableName = SoundPadTable)
 @Parcelize
 data class SaveSoundPad(
-    @PrimaryKey(autoGenerate = true) @SerializedName("position") val position: Int,
+    @PrimaryKey(autoGenerate = true) val primaryKey: Int,
+    @SerializedName("position") val position: Int,
     @Embedded @SerializedName("sound") val sound: Soundboard?
 ): Parcelable

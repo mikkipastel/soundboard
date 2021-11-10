@@ -44,6 +44,7 @@ class SoundPadViewModel(
         val initList = mutableListOf<SaveSoundPad>()
         for (i in 0..7) {
             val pad = SaveSoundPad(
+                i + 1,
                 i,
                 null
             )

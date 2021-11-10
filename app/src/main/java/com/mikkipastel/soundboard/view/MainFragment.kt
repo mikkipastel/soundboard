@@ -60,10 +60,9 @@ class MainFragment: Fragment(), ButtonSoundListener {
             }
         })
         soundPadViewModel.soundPadUpdate.observe(viewLifecycleOwner, {
-            val buttonViewPosition = it.position-1
             buttonAdapter.apply {
-                padList[buttonViewPosition] = it
-                notifyItemChanged(buttonViewPosition)
+                padList[it.position] = it
+                notifyItemChanged(it.position)
             }
         })
     }
