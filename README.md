@@ -37,5 +37,5 @@
 </p>
 
 ## Download
-เดี๋ยวเอาขึ้น Play Store นะ แปปปป
+[Play Store](https://play.google.com/store/apps/details?id=com.mikkipastel.soundboard)
 
