@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
@@ -46,7 +47,7 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
     override fun onStart() {
         super.onStart()
-        val behavior = BottomSheetBehavior.from(requireView().parent as View)
+        val behavior = BottomSheetBehavior.from(this.requireView().parent as View)
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
@@ -77,7 +78,7 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         )
 
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = LinearLayoutManager(context)
             adapter = soundListAdapter
             setItemViewCacheSize(soundList?.size!!)
         }
@@ -93,8 +94,9 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
 
         val path = "assets:///sound/$mp3"
         val dataSourceFactory = Factory { AssetDataSource(requireContext()) }
+        val mediaItem = MediaItem.fromUri(Uri.parse(path))
         val mediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(Uri.parse(path))
+            .createMediaSource(mediaItem)
 
         player.addListener(object: Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) {

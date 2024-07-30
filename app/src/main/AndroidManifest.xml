@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mikkipastel.soundboard">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".MainApplication"
@@ -14,7 +13,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".view.SplashScreenActivity">
+        <activity
+            android:name=".view.SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

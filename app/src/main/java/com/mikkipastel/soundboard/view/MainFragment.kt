@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.AssetDataSource
@@ -53,18 +54,18 @@ class MainFragment: Fragment(), ButtonSoundListener {
     }
 
     private fun attachObserver() {
-        soundPadViewModel.soundPadList.observe(viewLifecycleOwner, {
+        soundPadViewModel.soundPadList.observe(viewLifecycleOwner) {
             when (it.size == 0) {
                 true -> soundPadViewModel.initDatabase()
                 false -> initSoundPad(it)
             }
-        })
-        soundPadViewModel.soundPadUpdate.observe(viewLifecycleOwner, {
+        }
+        soundPadViewModel.soundPadUpdate.observe(viewLifecycleOwner) {
             buttonAdapter.apply {
                 padList[it.position] = it
                 notifyItemChanged(it.position)
             }
-        })
+        }
     }
 
     private fun initSoundPad(padList: MutableList<SaveSoundPad>) {
@@ -78,8 +79,9 @@ class MainFragment: Fragment(), ButtonSoundListener {
     override fun playSound(mp3: String) {
         val path = "assets:///sound/$mp3"
         val dataSourceFactory = Factory { AssetDataSource(requireContext()) }
+        val mediaItem = MediaItem.fromUri(Uri.parse(path))
         val mediaSource = ProgressiveMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(Uri.parse(path))
+            .createMediaSource(mediaItem)
 
         player.setMediaSource(mediaSource)
         player.prepare()

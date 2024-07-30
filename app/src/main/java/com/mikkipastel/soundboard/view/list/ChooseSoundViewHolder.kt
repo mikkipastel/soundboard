@@ -7,6 +7,7 @@ import com.mikkipastel.soundboard.R
 import com.mikkipastel.soundboard.databinding.ItemChooseSoundBinding
 import com.mikkipastel.soundboard.model.SaveSoundPad
 import com.mikkipastel.soundboard.model.Soundboard
+import com.mikkipastel.soundboard.utils.pixelsEqualTo
 
 class ChooseSoundViewHolder(
     private val itemBinding: ItemChooseSoundBinding
@@ -26,20 +27,14 @@ class ChooseSoundViewHolder(
                 }
             }
             iconPlayPause.setOnClickListener {
-                when (
-                    iconPlayPause.drawable.constantState == ContextCompat.getDrawable(
-                        root.context,
-                        R.drawable.ic_play
-                    )?.constantState
-                ) {
-                    true -> {
-                        setPauseSoundIcon()
-                        listener.playSound(position, soundboard.mp3)
-                    }
-                    false -> {
-                        setPlaySoundIcon()
-                        listener.pauseSound()
-                    }
+                if (iconPlayPause.drawable.pixelsEqualTo(
+                        ContextCompat.getDrawable(root.context, R.drawable.ic_play))
+                    ) {
+                    setPauseSoundIcon()
+                    listener.playSound(position, soundboard.mp3)
+                } else {
+                    setPlaySoundIcon()
+                    listener.pauseSound()
                 }
             }
             textSoundName.text = "${soundboard.emoji} ${soundboard.name}"

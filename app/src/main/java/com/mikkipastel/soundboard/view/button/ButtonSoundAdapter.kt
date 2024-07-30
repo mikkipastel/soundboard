@@ -11,9 +11,6 @@ class ButtonSoundAdapter(
 ): RecyclerView.Adapter<ButtonSoundViewHolder>() {
 
     var padList: MutableList<SaveSoundPad> = mutableListOf()
-    set(value) {
-        field = value
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonSoundViewHolder {
         return ButtonSoundViewHolder(

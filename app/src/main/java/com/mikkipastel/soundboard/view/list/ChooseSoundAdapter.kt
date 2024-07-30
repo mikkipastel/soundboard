@@ -13,13 +13,13 @@ class ChooseSoundAdapter(
     private val listener: ChooseSoundListener
 ): RecyclerView.Adapter<ChooseSoundViewHolder>() {
 
-    var chooseSound: Soundboard?= null
+    var chooseSound: Soundboard? = null
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    var playSoundMp3: String?= null
+    var playSoundMp3: String? = null
         set(value) {
             field = value
             notifyDataSetChanged()
