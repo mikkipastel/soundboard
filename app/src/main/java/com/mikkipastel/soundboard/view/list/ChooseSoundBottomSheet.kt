@@ -101,7 +101,7 @@ class ChooseSoundBottomSheet: BottomSheetDialogFragment(), ChooseSoundListener {
         player.addListener(object: Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 if (!isPlaying) {
-                    soundListAdapter.playSoundMp3 = mp3
+                    soundListAdapter.playSoundMp3 = null
                 }
             }
         })
